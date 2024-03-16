@@ -1,0 +1,104 @@
+p {
+  font-family: Lato;
+}
+
+
+.container {
+  height: 100%;
+  align-items: center;
+}
+
+.maintoolbar {
+  /* background-color: cadetblue; */
+  /* background-image: linear-gradient(to right, black, white, blue); */
+}
+
+.flex-container {
+  height: 80%;
+  /*resize: both;*/
+}
+
+.maincard {
+  height: 95%;
+  /* background-color: #FFFFFF7F; */
+}
+
+.leftmaincard {
+  margin-left: 8%;
+}
+
+.rightmaincard {
+  margin-right: 8%;
+}
+
+.editor {
+  height: 100%;
+  /* background-color: #FFFFFF7F; */
+}
+
+.mat-button-toggle {
+  font-size: small;
+}
+
+.inputtoolbar {
+  height: 10%;
+}
+.codemirrorcontainer {
+  margin: 0;
+  padding: 0;
+  height: 90%;
+}
+
+:host::ng-deep .CodeMirror{
+  height:100%;
+  /* font-size: larger; */
+  line-height: 150%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mappingcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+
+#editor1,
+#editor2 {
+  height: 500px;
+}
+#diffeditor {
+  height: 500px;
+}
+
+.editor-container {
+  border: 1px solid #ddd;
+}
+.input-title {
+  text-align: center;
+  color: #585858;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  background-color: #ecebeb;
+}
+.input-title label {
+  margin-top: 6px;
+}
+.container-diff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.convertdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}

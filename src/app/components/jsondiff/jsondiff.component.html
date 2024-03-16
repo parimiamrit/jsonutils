@@ -1,0 +1,49 @@
+<div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="50%" class="maincard leftmaincard">
+    <div style="height: 100%;">
+      <mat-toolbar class="inputtoolbar">
+        <mat-button-toggle-group name="inputLang" aria-label="inputLang" value="JSON" [(ngModel)]="inputLang">
+          <mat-button-toggle value="JSON" style="width: 60px;">JSON</mat-button-toggle>
+        </mat-button-toggle-group>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="beautifyInputContent()">Beautify</button>
+      </mat-toolbar>
+      <div class="codemirrorcontainer">
+        <ngx-codemirror #inputcodemirror class="editor"
+                        [options]="inputCodeMirrorOptions"
+                        [(ngModel)]="inputdata">
+        </ngx-codemirror>
+      </div>
+      <p [attr.disabled]="!errorBool" style="color: red;font-size: smaller;">{{error}}</p>
+    </div>
+  </mat-card>
+  <mat-card fxFlex="50%" class="maincard rightmaincard">
+    <div style="height: 100%;">
+      <mat-toolbar class="inputtoolbar">
+        <mat-button-toggle-group name="outputLang" aria-label="outputLang" value="text/x-java" [(ngModel)]="outputLang" (change)="changeOutputEditorOption($event.value)">
+          <mat-button-toggle value="application/ld+json" style="width: 60px;">JSON</mat-button-toggle>
+        </mat-button-toggle-group>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="beautifyOutputContent()">Beautify</button>
+      </mat-toolbar>
+      <div class="codemirrorcontainer">
+        <ngx-codemirror #outputcodemirror id="outputcodemirror" class="editor"
+                        [options]="outputCodeMirrorOptions"
+                        [(ngModel)]="outputdata">
+        </ngx-codemirror>
+      </div>
+      <p [attr.disabled]="!outputErrorBool" style="color: red;font-size: smaller;">{{outputError}}</p>
+    </div>
+  </mat-card>
+</div>
+<div class="convertdiv">
+  <button mat-button mat-raised-button color="primary" (click)="calculateDiff()">Diff</button>
+</div>
+<div class="container-fluid container-diff" fxLayout="row" fxLayoutAlign="center center">
+<!--  <h1>Text Compare</h1>-->
+  <div fxFlex="84%" class="row">
+    <div class="col-md-12 editor">
+      <ngx-monaco-diff-editor #diffeditor id="diffeditor" [options]="diffOptions" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
+    </div>
+  </div>
+</div>

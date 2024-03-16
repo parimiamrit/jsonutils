@@ -1,0 +1,22 @@
+<div class="container">
+  <div>
+    <mat-toolbar class="maintoolbar" color="primary" style="position: sticky;">
+      <span>JSON Utils</span>
+    </mat-toolbar>
+  </div>
+  <div id="main-tabs-div">
+	<nav mat-tab-nav-bar [tabPanel]="tabPanel" [style.background-color]="'#f3f3f3'">
+		<a mat-tab-link label="JSON Mapping" routerLink="/json-mapping-helper"
+		(click)="activeLink = '/json-mapping-helper'" [active]="activeLink == '/json-mapping-helper'">JSON Mapping</a>
+		<a mat-tab-link label="JSON to Class" routerLink="/json2class"
+		(click)="activeLink = '/json2class'" [active]="activeLink == '/json2class'" >JSON to Class</a>
+    <a mat-tab-link label="JSON Escape/Unescape" routerLink="/jsonescape"
+		(click)="activeLink = '/jsonescape'" [active]="activeLink == '/jsonescape'" routerLinkActive>JSON Escape/Unescape</a>
+    <a mat-tab-link label="JSON Diff" routerLink="/jsondiff"
+		(click)="activeLink = '/jsondiff'" [active]="activeLink == '/jsondiff'" routerLinkActive>JSON Diff</a>
+	</nav>
+  </div>
+  <mat-tab-nav-panel #tabPanel>
+	<router-outlet></router-outlet>
+  </mat-tab-nav-panel>
+</div>

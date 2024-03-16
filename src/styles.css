@@ -1,0 +1,22 @@
+/* Add application styles & imports to this file! */
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/idea.css';
+@import '~codemirror/theme/ambiance.css';
+@import '~codemirror/theme/darcula.css';
+@import '~codemirror/theme/juejin.css';
+@import '~codemirror/theme/material.css';
+@import '~codemirror/theme/mbo.css';
+@import '~codemirror/theme/idea.css';
+@import '~codemirror/theme/neat.css';
+@import '~codemirror/addon/fold/foldgutter.css';
+@import '~codemirror/addon/lint/lint.css';
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+html { 
+    /* background-image: url(assets/black.jpeg); */
+    /* background-image: url(assets/blue.jpeg); */
+    background-color: silver;
+    background-repeat:no-repeat;
+    background-size:cover;
+}

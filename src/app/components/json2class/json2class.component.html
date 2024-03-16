@@ -1,0 +1,68 @@
+<div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex="50%" class="maincard leftmaincard">
+    	<div style="height: 100%;">
+			<mat-toolbar class="inputtoolbar">
+				<mat-button-toggle-group name="inputLang" aria-label="inputLang" value="JSON" [(ngModel)]="inputLang">
+					<mat-button-toggle value="JSON" style="width: 60px;">JSON</mat-button-toggle>
+				</mat-button-toggle-group>
+				<span class="example-spacer"></span>
+				<button mat-button (click)="beautifyInputContent()">Beautify</button>
+			</mat-toolbar>
+			<div class="codemirrorcontainer">
+				<ngx-codemirror #inputcodemirror class="editor"
+					[options]="inputCodeMirrorOptions"
+					[(ngModel)]="inputdata"
+					(ngModelChange)="setEditorContent($event)">
+				</ngx-codemirror>
+			</div>
+			<p [attr.disabled]="!errorBool" style="color: red;font-size: smaller;">{{error}}</p>
+    	</div>
+    </mat-card>
+    <mat-card fxFlex="50%" class="maincard rightmaincard">
+		<div style="height: 100%;">
+			<mat-toolbar class="inputtoolbar">
+				<mat-button-toggle-group name="outputLang" aria-label="outputLang" value="text/x-java" [(ngModel)]="outputLang" (change)="changeOutputEditorOption($event.value)">
+					<mat-button-toggle value="text/x-java" style="width: 60px;">Java</mat-button-toggle>
+					<mat-button-toggle value="application/typescript" style="width: 60px;">TS</mat-button-toggle>
+					<mat-button-toggle value="text/x-python" style="width: 60px;">Python</mat-button-toggle>
+				</mat-button-toggle-group>
+				<span class="example-spacer"></span>
+				<div *ngIf="outputLang=='text/x-java'">
+					<button mat-button [mat-menu-trigger-for]="menu">Advanced</button>
+					<mat-menu #menu="matMenu" (click)="$event.stopPropagation()">
+						<li mat-menu-item (click)="$event.stopPropagation()" *ngFor="let option of javaOptions | keyvalue">
+							<mat-checkbox [(ngModel)]="javaOptions[option.key]" (change)="convertToClass()">{{option.key}}</mat-checkbox>
+						</li>
+					</mat-menu>
+				</div>
+				<div *ngIf="outputLang=='application/typescript'">
+					<button mat-button [mat-menu-trigger-for]="menu">Advanced</button>
+					<mat-menu #menu="matMenu" (click)="$event.stopPropagation()">
+						<li mat-menu-item *ngFor="let option of tsOptions | keyvalue">
+							<mat-checkbox [(ngModel)]="tsOptions[option.key]" (change)="convertToClass()">{{option.key}}</mat-checkbox>
+						</li>
+					</mat-menu>
+				</div>
+				<div *ngIf="outputLang=='text/x-python'">
+					<button mat-button [mat-menu-trigger-for]="menu">Advanced</button>
+					<mat-menu #menu="matMenu" (click)="$event.stopPropagation()">
+						<li mat-menu-item *ngFor="let option of pythonOptions | keyvalue">
+							<mat-checkbox [(ngModel)]="pythonOptions[option.key]" (change)="convertToClass()">{{option.key}}</mat-checkbox>
+						</li>
+					</mat-menu>
+				</div>
+			</mat-toolbar>
+			<div class="codemirrorcontainer">
+				<ngx-codemirror #outputcodemirror id="outputcodemirror" class="editor"
+					[options]="outputCodeMirrorOptions"
+					[(ngModel)]="outputdata"
+					(ngModelChange)="setEditorContent($event)">
+				</ngx-codemirror>
+			</div>
+			<p [attr.disabled]="!outputErrorBool" style="color: red;font-size: smaller;">{{outputError}}</p>
+		</div>
+	  </mat-card>
+  </div>
+<div class="convertdiv">
+	<button mat-button color="primary" (click)="convertToClass()">Convert</button>
+</div>

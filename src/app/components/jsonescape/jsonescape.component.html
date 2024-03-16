@@ -1,0 +1,42 @@
+<div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="48%" class="maincard leftmaincard" style="resize: both; overflow: auto;">
+    	<div style="height: 100%;">
+			<div class="codemirrorcontainer">
+				<ngx-codemirror #inputcodemirror class="editor"
+					[options]="inputCodeMirrorOptions"
+					[(ngModel)]="inputdata">
+				</ngx-codemirror>
+			</div>
+			<p [attr.disabled]="!errorBool" style="color: red;font-size: smaller;">{{error}}</p>
+    	</div>
+        <!-- <div style="display: flex;justify-content: center;">
+            <button mat-button color="primary" (click)="escape()">Escape</button>
+        </div> -->
+    </div>
+    <!-- <div style="width: 4%;">
+    </div> -->
+    <div class="grippie" style="margin-right: 0px;"></div>
+    <div fxFlex="48%" class="maincard rightmaincard">
+		<div style="height: 100%;">
+			<div class="codemirrorcontainer">
+				<ngx-codemirror #outputcodemirror id="outputcodemirror" class="editor"
+					[options]="outputCodeMirrorOptions"
+					[(ngModel)]="outputdata">
+				</ngx-codemirror>
+			</div>
+			<p [attr.disabled]="!outputErrorBool" style="color: red;font-size: smaller;">{{outputError}}</p>
+		</div>
+        <!-- <div style="display: flex;justify-content: center;">
+            <button mat-button color="primary" (click)="unescape()">Unescape</button>
+        </div> -->
+	  </div>
+  </div>
+  <div class="buttons" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="30%" class="maincard" style="background-color: transparent;">
+        <div style="display: flex;justify-content: center;">
+            <button mat-raised-button color="primary" (click)="escape()" style="height: auto; margin-right: 10%;">Escape</button>
+            <mat-checkbox [(ngModel)]="removeEmptySpaces">Remove whitespaces</mat-checkbox>
+            <button mat-raised-button color="primary" (click)="unescape()" style="height: auto; margin-left: 10%;">Unescape</button>
+        </div>
+    </div>
+  </div>

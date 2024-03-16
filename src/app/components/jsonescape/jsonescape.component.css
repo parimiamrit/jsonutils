@@ -1,0 +1,68 @@
+p {
+    font-family: Lato;
+}
+
+
+.container {
+    height: 100%;
+    align-items: center;
+}
+
+.flex-container {
+    height: 80%;
+}
+
+.maincard {
+    height: 95%;
+    /* background-color: #FFFFFF7F; */
+}
+
+.leftmaincard {
+    margin-left: 15%;
+}
+
+.rightmaincard {
+    margin-right: 15%;
+}
+
+.editor {
+    height: 100%;
+    /* background-color: #FFFFFF7F; */
+}
+
+.mat-button-toggle {
+    font-size: small;
+}
+
+.inputtoolbar {
+    height: 10%;
+}
+.codemirrorcontainer {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: auto;
+}
+
+:host() ::ng-deep .CodeMirror{
+    height:100%;
+    /* font-size: larger; */
+    line-height: 150%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mappingcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textarea::-webkit-resizer {
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent orangered orangered transparent;
+}
+
